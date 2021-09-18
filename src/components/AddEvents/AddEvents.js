@@ -23,11 +23,9 @@ const AddEvents = () => {
       headers: { "content-type": "application/json" },
       body: JSON.stringify(eventData),
     }).then((response) => {
-      console.log(response);
+      console.log("data send",response);
     });
   };
-
-  // b278a2d4e17062aed0996c67bedbf6d1
 
   const handleImageUpload = (event) => {
     console.log(event.target.files[0]);
@@ -39,7 +37,7 @@ const AddEvents = () => {
     axios
       .post("https://api.imgbb.com/1/upload", imageUpload)
       .then(function (response) {
-        console.log(response.data.data.display_url);
+        setImageURL(response.data.data.display_url);
       })
       .catch(function (error) {
         console.log(error);
